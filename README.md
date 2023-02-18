@@ -1,11 +1,11 @@
-## 環境
+#### 環境
 ```
 PHP 8.1.14
 laravel 9.48.0
 MySQL 8.0
 ```
 
-## バック
+#### バック
 ```
 // path
 cd original_project/ec-laravel
@@ -15,7 +15,7 @@ docker compose up -d
 docker compose exec app bash
 ```
 
-## フロント
+#### フロント
 ```
 // path
 cd original_project/ec-laravel/backend
