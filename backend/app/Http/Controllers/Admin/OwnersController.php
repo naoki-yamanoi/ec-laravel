@@ -131,4 +131,22 @@ class OwnersController extends Controller
                 'status' => 'alert'
             ]);
     }
+
+    // 以下２つ期限切れオーナーに関するメソッド
+    public function expiredOwnerIndex() {
+        $expiredOwners = Owner::onlyTrashed()->get(); // ソフトデリートのみ取得
+
+        return view('admin.expired-owners', compact('expiredOwners'));
+    }
+
+    public function expiredOwnerDestroy($id) {
+        Owner::onlyTrashed()->findOrFail($id)->forceDelete();
+
+        return redirect()
+            ->route('admin.expired-owners.index')
+            ->with([
+                'message' => 'オーナーを完全に削除しました。',
+                'status' => 'alert'
+            ]);;
+    }
 }
